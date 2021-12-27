@@ -25,7 +25,7 @@ names(Ziehungen)<-c("Datum", "Z1", "Z2", "Z3", "Z4", "Z5", "EZ1", "EZ2",
                     , "AnzKl12", "QuoteKl12")
 
 
-Ziehungen<-Ziehungen[!(Ziehungen$Datum=="Spieleinsätze und Quoten in EUR" | Ziehungen$Datum=="Alle Angaben ohne Gewähr"),]
+Ziehungen<-Ziehungen[!(Ziehungen$Datum=="SpieleinsÃ¤tze und Quoten in EUR" | Ziehungen$Datum=="Alle Angaben ohne GewÃ¤hr"),]
 
 rownames(Ziehungen) <- NULL
 
@@ -44,3 +44,15 @@ Schein_10<-list(c(4,7,9,26,48), c(7,8))
 Schein_11<-list(c(2,33,37,38,40), c(3,5))
 Schein_12<-list(c(1,16,22,26,42), c(5,6))
 Schein_13<-list(c(2,9,15,21,45), c(2,6))
+
+Schein<-list(Schein_1, Schein_2, Schein_3, Schein_4, Schein_5, Schein_6, Schein_7, Schein_8, Schein_9, Schein_10, Schein_11, Schein_12, Schein_13)
+
+
+temp<-Ziehungen[Ziehungen$Datum=="24.12.2021",c(2:8)]
+GZ = temp[1,c(1:5)]
+EZ = temp[1,c(6,7)]
+
+test<-Schein[[1]][[1]]
+test2<-c(9,15,24,35,44)
+
+intersect(test, test2)
