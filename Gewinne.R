@@ -1,6 +1,6 @@
 library(xlsx)
 library(zip)
-setwd("C:\\Users\\danie\\Downloads")
+setwd("C:\\Users\\Daniel\\Downloads")
 
 url<-"https://www.westlotto.com/wlinfo/WL_InfoService?gruppe=ErgebnisDownload&client=nlth&jahr_von=2019&jahr_bis=2022&spielart=EJ&format=excel"
 destination<-"EJ_ab_2019.xls.zip"
@@ -47,12 +47,16 @@ Schein_13<-list(c(2,9,15,21,45), c(2,6))
 
 Schein<-list(Schein_1, Schein_2, Schein_3, Schein_4, Schein_5, Schein_6, Schein_7, Schein_8, Schein_9, Schein_10, Schein_11, Schein_12, Schein_13)
 
+temp<-Ziehungen[Ziehungen$Datum=="05.11.2021",c(2:8)]
+GZ = temp[1:5]
+EZ = temp[6:7]
 
-temp<-Ziehungen[Ziehungen$Datum=="24.12.2021",c(2:8)]
-GZ = temp[1,c(1:5)]
-EZ = temp[1,c(6,7)]
+Ergebnis<-list()
 
-test<-Schein[[1]][[1]]
-test2<-c(9,15,24,35,44)
+for(i in 1:length(Schein)){
+  #print(intersect(as.numeric(GZ), Schein[[i]][[1]]))
+  #print(intersect(as.numeric(EZ), Schein[[i]][[2]]))
+  Ergebnis[[i]][[1]]<-length(intersect(as.numeric(GZ), Schein[[i]][[1]]))
+  Ergebnis[[i]][[2]]<-length(intersect(as.numeric(EZ), Schein[[i]][[2]]))
+}
 
-intersect(test, test2)
