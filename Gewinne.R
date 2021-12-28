@@ -1,5 +1,6 @@
 library(xlsx)
 library(zip)
+library(dplyr)
 setwd("C:\\Users\\Daniel\\Downloads")
 
 url<-"https://www.westlotto.com/wlinfo/WL_InfoService?gruppe=ErgebnisDownload&client=nlth&jahr_von=2019&jahr_bis=2022&spielart=EJ&format=excel"
@@ -51,12 +52,17 @@ temp<-Ziehungen[Ziehungen$Datum=="05.11.2021",c(2:8)]
 GZ = temp[1:5]
 EZ = temp[6:7]
 
-Ergebnis<-list()
+Ergebnis<-data.frame()
 
 for(i in 1:length(Schein)){
   #print(intersect(as.numeric(GZ), Schein[[i]][[1]]))
   #print(intersect(as.numeric(EZ), Schein[[i]][[2]]))
-  Ergebnis[[i]][[1]]<-length(intersect(as.numeric(GZ), Schein[[i]][[1]]))
-  Ergebnis[[i]][[2]]<-length(intersect(as.numeric(EZ), Schein[[i]][[2]]))
-}
+  a<-length(intersect(as.numeric(GZ), Schein[[i]][[1]]))
+  b<-length(intersect(as.numeric(EZ), Schein[[i]][[2]]))
+  Ergebnis[i,1]<-paste(a, b)
+  }
 
+
+Ergebnis<-Ergebnis %>% count(V1)
+
+names(Ergebnis)<-c("Klasse", "Anzahl")
