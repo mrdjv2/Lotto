@@ -13,8 +13,9 @@ unzip("EJ_ab_2019.xls.zip")
 Ziehungen2019<-read.xlsx("EJ_ab_2019.xls",1)
 Ziehungen2020<-read.xlsx("EJ_ab_2019.xls",2)
 Ziehungen2021<-read.xlsx("EJ_ab_2019.xls",3)
+Ziehungen2022<-read.xlsx("EJ_ab_2019.xls",4)
 
-Ziehungen <- rbind(Ziehungen2019, Ziehungen2020, Ziehungen2021)
+Ziehungen <- rbind(Ziehungen2019, Ziehungen2020, Ziehungen2021, Ziehungen2022)
 
 Ziehungen<-unique(Ziehungen)
 
