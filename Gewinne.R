@@ -124,3 +124,11 @@ for(i in 1:n){
 
 names(Ziehungen)<-c("Datum","z1","z2","z3","z4","z5","EZ1","EZ2","QuoteKl1","QuoteKl2","QuoteKl3","QuoteKl4","QuoteKl5","QuoteKl6","QuoteKl7","QuoteKl8","QuoteKl9","QuoteKl10","QuoteKl11","QuoteKl12", "Gewinn")
 
+Gewinne_output <-data.frame(cbind(Ziehungen$Datum, Ziehungen$Gewinn))
+Gewinne_output[is.na(Gewinne_output)] <- 0
+names(Gewinne_output)<-c("Datum", "Gewinne")
+Gewinne_output$Gewinne<- as.numeric(Gewinne_output[,2])
+
+write.xlsx(Gewinne_output, "Gewinne.xlsx")
+
+
