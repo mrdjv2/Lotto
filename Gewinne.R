@@ -129,6 +129,6 @@ Gewinne_output[is.na(Gewinne_output)] <- 0
 names(Gewinne_output)<-c("Datum", "Gewinne")
 Gewinne_output$Gewinne<- as.numeric(Gewinne_output[,2])
 
-write.xlsx(Gewinne_output, "Gewinne.xlsx")
+#write.xlsx(Gewinne_output, "Gewinne.xlsx")
 
 
